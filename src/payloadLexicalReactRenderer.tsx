@@ -396,8 +396,10 @@ export function PayloadLexicalReactRenderer<
                 return elementRenderers.upload(node);
             }
 
-            if(typeof elementRenderers[node.type] === "function") {
-                return elementRenderers[node.type](node);
+            const customRenderer = elementRenderers[node.type as any] as Function | undefined;
+
+            if(typeof customRenderer === "function") {
+                return customRenderer(node);
             }
 
             throw new Error(`Missing element renderer for node type '${node.type}'`);

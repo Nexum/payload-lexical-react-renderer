@@ -402,6 +402,8 @@ export function PayloadLexicalReactRenderer<
                 return customRenderer(node);
             }
 
+            console.log("payloadLexicalReactRenderer.tsx:405 / ANON", customRenderer);
+
             throw new Error(`Missing element renderer for node type '${node.type}'`);
         },
         [elementRenderers]
